@@ -16,12 +16,9 @@
 }
 
 
-/* عنوان فصل ياسمين */
-.kids-title {
+/* عنوان فصل ياسمين */.kids-title {
     position: absolute;
-
-    /* وضع العنوان في منتصف الصفحة */
-    top: 55px;
+    top: 35px;
     left: 50%;
     transform: translateX(-50%);
 
@@ -33,21 +30,24 @@
     font-weight: 900;
 
     white-space: nowrap;
-
-    /* مسافة بين الكلمات */
     word-spacing: 12px;
 
-    /* تأثير ظل لطيف */
-    text-shadow:
-        3px 3px 0 #ffffff,
-        5px 5px 0 rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.85);
+    padding: 12px 35px 18px;
+
+    border-radius: 35px;
+
+    border: 5px solid #ffffff;
+
+    box-shadow:
+        0 8px 0 rgba(100, 170, 120, 0.25),
+        0 12px 25px rgba(0, 0, 0, 0.12);
 
     z-index: 20;
 
     animation: titleFloat 3s ease-in-out infinite;
 }
 
-/* ألوان مختلفة للكلمات */
 .kids-title span:nth-child(1) {
     color: #ff6b8a;
 }
@@ -63,7 +63,6 @@
 .kids-title span:nth-child(4) {
     color: #55b86a;
 }
-
 
 /* حركة طفيفة للعنوان */
 @keyframes titleFloat {
