@@ -15,6 +15,72 @@
   --focus-ring: #2E7D46;
 }
 
+
+/* عنوان فصل ياسمين */
+.kids-title {
+    position: absolute;
+
+    /* وضع العنوان في منتصف الصفحة */
+    top: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    direction: rtl;
+    text-align: center;
+
+    font-family: "Comic Sans MS", "Arial Rounded MT Bold", sans-serif;
+    font-size: clamp(32px, 5vw, 62px);
+    font-weight: 900;
+
+    white-space: nowrap;
+
+    /* مسافة بين الكلمات */
+    word-spacing: 12px;
+
+    /* تأثير ظل لطيف */
+    text-shadow:
+        3px 3px 0 #ffffff,
+        5px 5px 0 rgba(0, 0, 0, 0.12);
+
+    z-index: 20;
+
+    animation: titleFloat 3s ease-in-out infinite;
+}
+
+/* ألوان مختلفة للكلمات */
+.kids-title span:nth-child(1) {
+    color: #ff6b8a;
+}
+
+.kids-title span:nth-child(2) {
+    color: #6a8cff;
+}
+
+.kids-title span:nth-child(3) {
+    color: #ffb52e;
+}
+
+.kids-title span:nth-child(4) {
+    color: #55b86a;
+}
+
+
+/* حركة طفيفة للعنوان */
+@keyframes titleFloat {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(-6px);
+    }
+}
+
+
+
+
+
+
 * {
   box-sizing: border-box;
 }
