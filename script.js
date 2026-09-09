@@ -12,7 +12,7 @@ const items = [
   { id: "chicken",   word: "دجاجة",  image: "chicken.png" },
   { id: "giraffe",   word: "زرافة",  image: "giraffe.png" },
   { id: "deer",      word: "غزال",   image: "deer.png" },
-  { id: "policeman", word: "شرطي",   image: "policeman.png" },
+  { id: "policeman", word: "ضابط",   image: "policeman.png" },
   { id: "balloon",   word: "بالون",  image: "balloon.png" }
 ];
 
