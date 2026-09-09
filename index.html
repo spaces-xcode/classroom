@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>فصل ياسمين وأصدقائها</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- شريط علوي بسيط لعنوان اللعبة -->
+  <header class="topbar">
+    <h1 class="game-title">فصل ياسمين وأصدقائها</h1>
+    <div class="topbar-buttons">
+      <button id="soundToggle" class="icon-btn" title="تشغيل / إيقاف الصوت" aria-label="تشغيل أو إيقاف الصوت">🔊</button>
+      <button id="restartBtn" class="icon-btn" title="إعادة تشغيل اللعبة" aria-label="إعادة تشغيل اللعبة">🔄</button>
+    </div>
+  </header>
+
+  <!-- المشهد الرئيسي: الفصل الدراسي كصورة واحدة كبيرة -->
+  <main class="classroom">
+    <div class="scene-wrap" aria-label="مشهد الفصل الدراسي">
+     <div class="scene-frame">
+      <img src="classroom.png" class="scene-bg" alt="مشهد الفصل الدراسي: سبورة عليها صور تعليمية، وأربعة طلاب وأرنب">
+
+      <!-- نقاط تفاعلية شفافة فوق الصورة الرئيسية، كل واحدة فوق شخصية أو عنصر -->
+      <button class="hotspot" data-id="lemon"     style="left:29.8%; top:5.5%;  width:10.6%; height:11.6%;"></button>
+      <button class="hotspot" data-id="hand"      style="left:42.6%; top:8.0%;  width:11.7%; height:9.1%;"></button>
+      <button class="hotspot" data-id="chicken"   style="left:56.0%; top:4.9%;  width:9.9%;  height:16.6%;"></button>
+      <button class="hotspot" data-id="giraffe"   style="left:30.2%; top:18.4%; width:10.3%; height:23.9%;"></button>
+      <button class="hotspot" data-id="deer"      style="left:40.5%; top:20.2%; width:10.6%; height:20.2%;"></button>
+      <button class="hotspot" data-id="policeman" style="left:47.6%; top:15.9%; width:10.5%; height:27.6%;"></button>
+      <button class="hotspot" data-id="balloon"   style="left:58.7%; top:18.4%; width:5.9%;  height:23.9%;"></button>
+
+      <button class="hotspot" data-id="yasmine" style="left:4.1%;  top:50.7%; width:10.6%; height:35.1%;"></button>
+      <button class="hotspot" data-id="bushra"  style="left:24.4%; top:50.7%; width:9.3%;  height:35.1%;"></button>
+      <button class="hotspot" data-id="daoud"   style="left:43.6%; top:50.7%; width:10.6%; height:35.1%;"></button>
+      <button class="hotspot" data-id="sami"    style="left:63.9%; top:50.7%; width:9.6%;  height:35.1%;"></button>
+      <button class="hotspot" data-id="rabbit"  style="left:84.1%; top:50.7%; width:12.1%; height:35.1%;"></button>
+     </div>
+    </div>
+  </main>
+
+  <!-- طبقة شفافة خلف البطاقة -->
+  <div id="overlay" class="overlay" hidden></div>
+
+  <!-- بطاقة ظهور الكلمة -->
+  <div id="wordCard" class="word-card" hidden role="dialog" aria-live="polite">
+    <button id="wordCardClose" class="word-card-close" aria-label="إغلاق">✕</button>
+    <p id="wordText" class="word-text"></p>
+    <button id="repeatBtn" class="repeat-btn" aria-label="إعادة نطق الكلمة">🔊 استمع مرة أخرى</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

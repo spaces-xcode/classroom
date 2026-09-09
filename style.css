@@ -1,0 +1,301 @@
+/* =========================================================
+   الرموز الأساسية (Design Tokens)
+   ========================================================= */
+:root {
+  --bg-green: #DCF3D8;
+  --bg-green-deep: #BEE6C4;
+  --board-white: #FFFFFF;
+  --board-frame: #E4D9C4;
+  --wood-desk: #F6E6C9;
+  --accent-sun: #FFC94A;
+  --accent-coral: #FF8B6B;
+  --accent-sky: #58B7D9;
+  --text-dark: #3A3226;
+  --card-shadow: rgba(58, 50, 38, 0.25);
+  --focus-ring: #2E7D46;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Baloo Bhaijaan 2', 'Tahoma', sans-serif;
+  background: linear-gradient(180deg, var(--bg-green) 0%, var(--bg-green-deep) 100%);
+  color: var(--text-dark);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+button:focus-visible {
+  outline: 4px solid var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
+img {
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+/* =========================================================
+   الشريط العلوي
+   ========================================================= */
+.topbar {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px clamp(12px, 3vw, 28px);
+  height: 9vh;
+  min-height: 52px;
+}
+
+.game-title {
+  margin: 0;
+  font-size: clamp(16px, 2.6vw, 26px);
+  font-weight: 700;
+  color: #2E5B3A;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.6);
+}
+
+.topbar-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.icon-btn {
+  width: clamp(36px, 5vw, 46px);
+  height: clamp(36px, 5vw, 46px);
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 3px 0 rgba(0,0,0,0.12);
+  font-size: clamp(16px, 2.4vw, 20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease;
+}
+
+.icon-btn:active {
+  transform: scale(0.9);
+}
+
+.icon-btn.muted {
+  opacity: 0.45;
+}
+
+/* =========================================================
+   المشهد: الفصل الدراسي
+   ========================================================= */
+.classroom {
+  height: 89vh;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 1.5vh, 18px);
+  padding: 0 clamp(10px, 3vw, 30px) clamp(8px, 2vh, 20px);
+}
+
+/* -------- المشهد كصورة واحدة -------- */
+/* .scene-wrap يملأ المساحة المتاحة ويوسّط المحتوى */
+.scene-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 1500px;
+  height: 100%;
+  min-height: 0;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .scene-frame يأخذ بالضبط حجم الصورة المعروضة (بفضل inline-block)،
+   لذا تكون النقاط التفاعلية بالنسب المئوية داخله متطابقة تماماً مع الصورة
+   على أي مقاس شاشة */
+.scene-frame {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  max-height: 100%;
+  line-height: 0;
+}
+
+.scene-bg {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+  pointer-events: none;
+}
+
+/* =========================================================
+   النقاط التفاعلية فوق الصورة الرئيسية
+   ========================================================= */
+.hotspot {
+  position: absolute;
+  transform-origin: center bottom;
+  transition: transform 0.15s ease;
+  border-radius: 16px;
+}
+
+.hotspot:active,
+.hotspot.bounce {
+  transform: scale(0.92);
+}
+
+.hotspot:focus-visible {
+  outline: 4px dashed var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* تلميح بصري خفيف جداً عند التحويم على حاسوب فقط */
+@media (hover: hover) {
+  .hotspot:hover {
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 0 0 4px rgba(255, 201, 74, 0.35) inset;
+  }
+}
+
+/* =========================================================
+   طبقة التعتيم وبطاقة الكلمة
+   ========================================================= */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 40, 20, 0.35);
+  z-index: 10;
+  animation: fadeIn 0.2s ease forwards;
+}
+
+.overlay[hidden] {
+  display: none;
+}
+
+.word-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 20;
+  transform: translate(-50%, -50%) scale(0.4);
+  background: #FFFFFF;
+  border-radius: 34px;
+  padding: clamp(20px, 5vh, 48px) clamp(24px, 8vw, 70px);
+  box-shadow: 0 16px 0 var(--card-shadow), 0 20px 40px rgba(0,0,0,0.25);
+  text-align: center;
+  border: 6px solid var(--accent-sun);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  max-width: 90vw;
+  animation: popIn 0.4s cubic-bezier(.34,1.56,.64,1) forwards;
+}
+
+.word-card[hidden] {
+  display: none;
+}
+
+.word-card-close {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 20px;
+  color: #B0A48C;
+  width: 32px;
+  height: 32px;
+}
+
+.word-text {
+  margin: 0;
+  font-size: clamp(38px, 10vw, 84px);
+  font-weight: 800;
+  color: var(--accent-coral);
+  line-height: 1.1;
+}
+
+.repeat-btn {
+  font-size: clamp(13px, 2.4vw, 17px);
+  font-weight: 600;
+  background: var(--accent-sky);
+  color: #fff;
+  padding: 8px 22px;
+  border-radius: 30px;
+  box-shadow: 0 3px 0 rgba(0,0,0,0.15);
+}
+
+.repeat-btn:active {
+  transform: scale(0.95);
+}
+
+@keyframes popIn {
+  0%   { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
+  60%  { transform: translate(-50%, -50%) scale(1.08); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* نجوم صغيرة عند الاختيار */
+.star {
+  position: fixed;
+  z-index: 15;
+  pointer-events: none;
+  font-size: 20px;
+  animation: starPop 0.7s ease-out forwards;
+}
+
+@keyframes starPop {
+  0%   { transform: translate(0,0) scale(0.4) rotate(0deg); opacity: 1; }
+  100% { transform: translate(var(--sx), var(--sy)) scale(1.1) rotate(180deg); opacity: 0; }
+}
+
+/* =========================================================
+   الشاشات الصغيرة (الهاتف)
+   ========================================================= */
+@media (max-width: 640px) {
+  .topbar {
+    height: 8vh;
+    padding: 8px 12px;
+  }
+  .classroom {
+    height: 92vh;
+    gap: 6px;
+  }
+  .word-card {
+    padding: 20px 24px;
+    border-width: 5px;
+  }
+}
+
+@media (max-width: 380px) {
+}
+
+/* احترام تفضيل تقليل الحركة */
+@media (prefers-reduced-motion: reduce) {
+  .word-card, .overlay, .star, .hotspot {
+    animation: none !important;
+    transition: none !important;
+  }
+}
